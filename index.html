@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelance Invoice App - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="app-header">
+        <h1>📊 Dashboard</h1>
+        <nav>
+            <a href="clients.html">Clients</a>
+            <a href="invoices.html">Invoices</a>
+        </nav>
+    </header>
+
+    <main class="dashboard">
+        <section class="stats-container">
+            <div class="stat-card">
+                <h2>👤 Total Clients</h2>
+                <p id="totalClients">0</p>
+            </div>
+            <div class="stat-card">
+                <h2>🗒️ Total Invoices</h2>
+                <p id="totalInvoices">0</p>
+            </div>
+            <div class="stat-card">
+                <h2>💰 Total Value</h2>
+                <p id="totalValue">$0</p>
+            </div>
+            <div class="stat-card">
+                <h2>☑️ Paid vs Unpaid</h2>
+                <p id="paidUnpaid">0 / 0</p>
+            </div>
+        </section>
+
+        <section class="quote-section">
+            <h2>💡 Motivational Quote</h2>
+            <blockquote>
+                <p id="quoteText">Loading...</p>
+                <footer id="quoteAuthor">—</footer>
+            </blockquote>
+        </section>
+    </main>
+  
+    <footer>
+        <p>© 2025 Freelance Invoice Manager</p>
+    </footer>
+
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
