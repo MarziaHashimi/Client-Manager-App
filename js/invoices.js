@@ -15,6 +15,46 @@ const editingInvoiceIdInput = document.getElementById('editingInvoiceId');
 
 let invoices = []; 
 
+// sample invoices 
+if (!localStorage.getItem('invoices')) {
+  invoices = [
+    {
+      id: "INV-1001",
+      clientId: "1",
+      clientName: "Alice Johnson",
+      service: "Website Development",
+      description: "Developing a responsive company website",
+      amount: 1200,
+      date: "2025-08-01",
+      status: "Paid",
+      paid: true
+    },
+    {
+      id: "INV-1002",
+      clientId: "2",
+      clientName: "Mohammad Rahimi",
+      service: "Import Consultation",
+      description: "Business strategy consulting for imports",
+      amount: 800,
+      date: "2025-08-05",
+      status: "Pending",
+      paid: false
+    },
+    {
+      id: "INV-1003",
+      clientId: "3",
+      clientName: "Sara Lee",
+      service: "Graphic Design Package",
+      description: "Logo and branding design for her studio",
+      amount: 500,
+      date: "2025-08-10",
+      status: "Pending",
+      paid: false
+    }
+  ];
+  localStorage.setItem('invoices', JSON.stringify(invoices));
+}
+
 function fmt(v) {
   const n = Number(v || 0);
   return `$${n.toFixed(2)}`;
@@ -52,7 +92,6 @@ function loadInvoices() {
   invoices = saved ? JSON.parse(saved) : [];
   renderInvoices();
 }
-
 
 function saveInvoices() {
   localStorage.setItem('invoices', JSON.stringify(invoices));
@@ -92,7 +131,6 @@ function renderInvoices() {
     `;
     invoiceTableBody.appendChild(tr);
 
- 
     const markBtn = tr.querySelector('.mark-btn');
     const editBtn = tr.querySelector('.edit-btn');
     const deleteBtn = tr.querySelector('.delete-btn');
@@ -134,7 +172,6 @@ if (confirmDeleteBtn) {
   });
 }
 
-
 addInvoiceBtn.addEventListener('click', () => {
   populateClientDropdown();
   invoiceForm.reset();
@@ -167,7 +204,6 @@ invoiceForm.addEventListener('submit', (e) => {
   const date = dateInput.value;
   const status = statusSelect.value || 'Pending';
   const paid = status.toLowerCase() === 'paid';
-
 
   if (!clientId) {
     alert('Please select a client (or add one first).');
@@ -224,9 +260,8 @@ function openEditModal(id) {
   populateClientDropdown();
 
   invoiceIdInput.value = inv.id;
- 
-  setTimeout(() => {
 
+  setTimeout(() => {
     const opt = clientSelect.querySelector(`option[value="${inv.clientId}"]`);
     if (opt) opt.selected = true;
   }, 0);
