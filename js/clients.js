@@ -1,5 +1,33 @@
 let clients = JSON.parse(localStorage.getItem("clients")) || [];
 
+// sample clients
+if (clients.length === 0) {
+    clients = [
+        {
+            id: Date.now() + 1,
+            name: "Alice",
+            email: "alice@example.com",
+            company: "Tech Solutions",
+            notes: "Interested in web services."
+        },
+        {
+            id: Date.now() + 2,
+            name: "Mohammad",
+            email: "rahimi@gmail.com",
+            company: "Global Trade Ltd.",
+            notes: "Requested a follow-up meeting."
+        },
+        {
+            id: Date.now() + 3,
+            name: "Sara",
+            email: "sara@example.com",
+            company: "Creative Studio",
+            notes: "graphic design support."
+        }
+    ];
+    localStorage.setItem("clients", JSON.stringify(clients));
+}
+
 const clientForm = document.getElementById("clientForm");
 const clientsTableBody = document.getElementById("clientsTableBody");
 
